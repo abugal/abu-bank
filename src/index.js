@@ -1,3 +1,5 @@
+import './index.css'
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route,} from "react-router-dom";
@@ -8,21 +10,27 @@ import { NewCustomer } from './new-customer/new-customer';
 import { Transfer } from './transfer/transfer';
 import { Withdraw } from './withdraw/withdraw';
 
-
-
+import { ThemeContextProviver } from './store/theme-context';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  <React.StrictMode>
+    <ThemeContextProviver>
   <BrowserRouter>
+  
       <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/dashboard" element={<Balance />} />
-        <Route path="/deposit" element={<Deposit />} />
-        <Route path="/transfer" element={<NewCustomer />} />
-        <Route path="/balance" element={<Transfer />} />
-        <Route path="/withdrawal" element={<Withdraw />} />
+        <Route exact path="/" element={<Dashboard />} />
+        <Route exact path="/NewCustomer" element={<NewCustomer />} />
+        <Route exact path="/deposit" element={<Deposit />} />
+        <Route exact path="/withdraw" element={<Withdraw />} />
+        <Route exact path="/transfer" element={<Transfer />} />
+        <Route exact path="/balance" element={<Balance />} />
+        
       </Routes>
   </BrowserRouter>
+    </ThemeContextProviver>
+    
+  </React.StrictMode>
   
 
 );
